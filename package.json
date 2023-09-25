@@ -1,9 +1,8 @@
 {
-  "name": "@stevendejongnl/storybook-stylesheet-toggle",
-  "version": "0.0.1",
+  "name": "@stevendejong/storybook-stylesheet-toggle",
+  "version": "0.0.0",
   "description": "Simple toggle to load stylesheets",
   "keywords": [
-    "storybook-addons",
     "storybook-addons"
   ],
   "repository": {
