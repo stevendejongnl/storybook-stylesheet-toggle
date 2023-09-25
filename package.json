@@ -1,6 +1,6 @@
 {
   "name": "storybook-stylesheet-toggle",
-  "version": "0.1.5",
+  "version": "0.0.1",
   "description": "Simple toggle to load stylesheets",
   "keywords": [
     "storybook-addons",
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/stevendejongnl/toggle-wobble"
+    "url": "https://github.com/stevendejongnl/storybook-stylesheet-toggle"
   },
   "author": "Steven de Jong <steven@steven-dejong.nl>",
   "license": "MIT",
