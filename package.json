@@ -100,7 +100,8 @@
     "jackspeak": "2.1.1"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "storybook": {
     "displayName": "Stylesheet Toggle",
