@@ -12,10 +12,10 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
-      - name: Use Node.js latest
+      - name: Use Node.js 18.13
         uses: actions/setup-node@v3
         with:
-          node-version: latest
+          node-version: 18.13.x
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
