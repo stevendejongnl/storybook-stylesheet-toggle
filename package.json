@@ -1,7 +1,7 @@
 {
   "name": "@stevendejong/storybook-stylesheet-toggle",
   "version": "0.0.4",
-  "description": "Simple toggle to load stylesheets",
+  "description": "The Storybook Stylesheet Toggle addon is a simple and convenient tool for changing stylesheets on the fly.",
   "keywords": [
     "storybook-addons"
   ],
@@ -108,6 +108,6 @@
     "supportedFrameworks": [
       "web-components"
     ],
-    "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+    "icon": "https://github.com/stevendejongnl/storybook-stylesheet-toggle/blob/main/icon.png"
   }
 }
