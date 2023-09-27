@@ -1,3 +1,15 @@
+# v0.0.6 (Wed Sep 27 2023)
+
+#### 🐛 Bug Fix
+
+- refactor: Remove console.log statement and unused files [#5](https://github.com/stevendejongnl/storybook-stylesheet-toggle/pull/5) ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### Authors: 1
+
+- Steven de Jong ([@stevendejongnl](https://github.com/stevendejongnl))
+
+---
+
 # v0.0.5 (Wed Sep 27 2023)
 
 #### 🐛 Bug Fix
