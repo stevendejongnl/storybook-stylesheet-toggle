@@ -1,6 +1,6 @@
-# Storybook Addon Stylesheet Toggle
+# Storybook Stylesheet Toggle addon
 
-The Storybook Stylesheet Toggle Plugin is a simple and convenient tool for changing stylesheets on the fly within your Storybook stories. It allows you to dynamically switch between different stylesheets using a dropdown menu accessed via a toolbar button.
+The Storybook Stylesheet Toggle addon is a simple and convenient tool for changing stylesheets on the fly within your Storybook stories. It allows you to dynamically switch between different stylesheets using a dropdown menu accessed via a toolbar button.
 
 ![](preview.gif)
 
