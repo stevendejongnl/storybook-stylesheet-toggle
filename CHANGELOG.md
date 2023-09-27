@@ -1,3 +1,15 @@
+# v0.0.5 (Wed Sep 27 2023)
+
+#### 🐛 Bug Fix
+
+- chore: Update addon description and icon URL [#4](https://github.com/stevendejongnl/storybook-stylesheet-toggle/pull/4) ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### Authors: 1
+
+- Steven de Jong ([@stevendejongnl](https://github.com/stevendejongnl))
+
+---
+
 # v0.0.4 (Wed Sep 27 2023)
 
 #### 🐛 Bug Fix
