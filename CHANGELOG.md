@@ -1,3 +1,16 @@
+# v0.0.6 (Thu Sep 28 2023)
+
+#### 🐛 Bug Fix
+
+- feat(package.json): add support for additional frameworks and fix ico… [#6](https://github.com/stevendejongnl/storybook-stylesheet-toggle/pull/6) ([@stevendejongnl](https://github.com/stevendejongnl))
+- refactor: Remove console.log statement and unused files [#5](https://github.com/stevendejongnl/storybook-stylesheet-toggle/pull/5) ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### Authors: 1
+
+- Steven de Jong ([@stevendejongnl](https://github.com/stevendejongnl))
+
+---
+
 # v0.0.5 (Wed Sep 27 2023)
 
 #### 🐛 Bug Fix
