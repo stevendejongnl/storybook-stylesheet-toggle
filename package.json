@@ -105,8 +105,16 @@
   "storybook": {
     "displayName": "Stylesheet Toggle",
     "supportedFrameworks": [
-      "web-components"
+      "react",
+      "vue",
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "react-native"
     ],
-    "icon": "https://github.com/stevendejongnl/storybook-stylesheet-toggle/blob/main/icon.png"
+    "icon": "https://github.com/stevendejongnl/storybook-stylesheet-toggle/blob/main/icon.png?raw=true"
   }
 }
