@@ -1,16 +1,16 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from '@storybook/react'
 
 const preview: Preview = {
   parameters: {
     backgrounds: {
-      default: "light",
+      default: 'light',
     },
     stylesheetToggle: {
-      "default": "main.css",
-      "custom-theme": "custom-theme.css",
-      "second-custom-theme": "https://second.com/custom-theme.css",
+      default: 'main.css',
+      'custom-theme': 'custom-theme.css',
+      'second-custom-theme': 'https://second.com/custom-theme.css',
     },
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -18,6 +18,6 @@ const preview: Preview = {
       },
     },
   },
-};
+}
 
-export default preview;
+export default preview

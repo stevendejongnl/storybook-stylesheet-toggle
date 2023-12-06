@@ -1,3 +1,3 @@
-export const defaultStylesheets: {[key: string]: string} = {
-  "default": ''
+export const defaultStylesheets: { [key: string]: string } = {
+  default: '',
 }
