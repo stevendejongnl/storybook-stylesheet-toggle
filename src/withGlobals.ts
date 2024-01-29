@@ -37,6 +37,10 @@ function injectStylesheet(stylesheet: string) {
   const bodyElement = document.querySelector('body');
   const stylesheetElement = document.createElement('link');
 
+  if (!stylesheet) {
+    return
+  }
+
   stylesheetElement.setAttribute('id', 'stylesheetToggle');
   stylesheetElement.setAttribute('rel', 'stylesheet');
   stylesheetElement.setAttribute('href', stylesheet);
