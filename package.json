@@ -1,6 +1,6 @@
 {
   "name": "@stevendejong/storybook-stylesheet-toggle",
-  "version": "0.0.5",
+  "version": "0.0.11",
   "description": "The Storybook Stylesheet Toggle addon is a simple and convenient tool for changing stylesheets on the fly.",
   "keywords": [
     "storybook-addons"
