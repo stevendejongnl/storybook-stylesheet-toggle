@@ -1,3 +1,15 @@
+# v1.0.2 (Mon Jan 05 2026)
+
+#### ⚠️ Pushed to `main`
+
+- feat: Add custom stylesheet input feature with dynamic management ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### Authors: 1
+
+- Steven de Jong ([@stevendejongnl](https://github.com/stevendejongnl))
+
+---
+
 # v0.0.13 (Mon Jan 05 2026)
 
 #### 🐛 Bug Fix
