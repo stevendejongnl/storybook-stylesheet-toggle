@@ -1,6 +1,6 @@
 import React from "react";
-import { useGlobals } from "@storybook/manager-api";
-import { IconButton, TooltipLinkList, WithTooltip } from "@storybook/components";
+import { useGlobals } from "storybook/manager-api";
+import { IconButton, TooltipLinkList, WithTooltip } from "storybook/internal/components";
 import { PaintBrushIcon } from "@storybook/icons";
 import { PARAM_KEY, TOOL_ID } from "./constants";
 import { defaultStylesheets } from "./defaults";

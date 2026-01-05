@@ -1,18 +1,14 @@
 import { defineConfig, type Options } from "tsup";
 import { readFile } from "fs/promises";
-import { globalPackages as globalManagerPackages } from "@storybook/manager/globals";
-import { globalPackages as globalPreviewPackages } from "@storybook/preview/globals";
 
-// The current browsers supported by Storybook v7
-const BROWSER_TARGET: Options["target"] = ["chrome100", "safari15", "firefox91"];
-const NODE_TARGET: Options["target"] = ["node18"];
+// Storybook 10 minimum Node version
+const NODE_TARGET: Options["target"] = "node20.19";
 
 type BundlerConfig = {
   bundler?: {
-    exportEntries?: string[];
-    nodeEntries?: string[];
     managerEntries?: string[];
     previewEntries?: string[];
+    nodeEntries?: string[];
   };
 };
 
@@ -20,57 +16,42 @@ export default defineConfig(async (options) => {
   const packageJson = await readFile("./package.json", "utf8").then(JSON.parse) as BundlerConfig;
   const {
     bundler: {
-      exportEntries = ["./src/index.ts"],
       managerEntries = ["./src/manager.tsx"],
-      previewEntries = ["./src/preview.ts"],
+      previewEntries = ["./src/preview.ts", "./src/index.ts"],
       nodeEntries = ["./src/preset.ts"]
     } = {}
   } = packageJson;
 
   const commonConfig: Options = {
-    splitting: false,
+    splitting: true,
     minify: !options.watch,
     treeshake: true,
     sourcemap: true,
     clean: true
   };
 
+  // Packages provided by Storybook - must be externalized
+  const externalPackages = [
+    "react",
+    "react-dom",
+    "@storybook/icons",
+  ];
+
   const configs: Options[] = [];
 
-  // export entries are entries meant to be manually imported by the user
-  // they are not meant to be loaded by the manager or preview
-  // they'll be usable in both node and browser environments, depending on which features and modules they depend on
-  if (exportEntries.length) {
-    configs.push({
-      ...commonConfig,
-      entry: exportEntries,
-      dts: {
-        resolve: true
-      },
-      format: ["esm", "cjs"],
-      target: [...BROWSER_TARGET, ...NODE_TARGET],
-      platform: "neutral",
-      external: [...globalManagerPackages, ...globalPreviewPackages]
-    });
-  }
-
-  // manager entries are entries meant to be loaded into the manager UI
-  // they'll have manager-specific packages externalized and they won't be usable in node
-  // they won't have types generated for them as they're usually loaded automatically by Storybook
+  // Manager entries - Storybook toolbar UI
   if (managerEntries.length) {
     configs.push({
       ...commonConfig,
       entry: managerEntries,
       format: ["esm"],
-      target: BROWSER_TARGET,
+      target: "esnext",
       platform: "browser",
-      external: globalManagerPackages
+      external: externalPackages
     });
   }
 
-  // preview entries are entries meant to be loaded into the preview iframe
-  // they'll have preview-specific packages externalized and they won't be usable in node
-  // they'll have types generated for them so they can be imported when setting up Portable Stories
+  // Preview entries - decorators and exports
   if (previewEntries.length) {
     configs.push({
       ...commonConfig,
@@ -79,20 +60,18 @@ export default defineConfig(async (options) => {
         resolve: true
       },
       format: ["esm"],
-      target: BROWSER_TARGET,
+      target: "esnext",
       platform: "browser",
-      external: globalPreviewPackages
+      external: externalPackages
     });
   }
 
-  // node entries are entries meant to be used in node-only
-  // this is useful for presets, which are loaded by Storybook when setting up configurations
-  // they won't have types generated for them as they're usually loaded automatically by Storybook
+  // Node entries - presets
   if (nodeEntries.length) {
     configs.push({
       ...commonConfig,
       entry: nodeEntries,
-      format: ["cjs"],
+      format: ["esm"],
       target: NODE_TARGET,
       platform: "node"
     });
