@@ -1,3 +1,19 @@
+# v0.0.13 (Mon Jan 05 2026)
+
+#### 🐛 Bug Fix
+
+- Upgrade to Storybook 9 and 10 compatibility [#13](https://github.com/stevendejongnl/storybook-stylesheet-toggle/pull/13) ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### ⚠️ Pushed to `main`
+
+- Update CHANGELOG.md ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### Authors: 1
+
+- Steven de Jong ([@stevendejongnl](https://github.com/stevendejongnl))
+
+---
+
 # v0.0.12 (Tue Mar 12 2024)
 
 #### 🐛 Bug Fix
