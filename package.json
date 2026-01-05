@@ -1,6 +1,6 @@
 {
   "name": "@stevendejong/storybook-stylesheet-toggle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Toggle between stylesheets in Storybook. Configure stylesheets via parameters or add custom ones dynamically at runtime.",
   "keywords": [
     "storybook-addons"
