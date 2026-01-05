@@ -1,5 +1,5 @@
-import type { PartialStoryFn as StoryFunction, Renderer, StoryContext } from "@storybook/types";
-import { useEffect, useGlobals } from "@storybook/preview-api";
+import type { PartialStoryFn as StoryFunction, Renderer, StoryContext } from "storybook/internal/types";
+import { useEffect, useGlobals } from "storybook/preview-api";
 import { PARAM_KEY } from "./constants";
 
 

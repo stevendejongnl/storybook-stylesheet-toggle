@@ -1,5 +1,5 @@
 import React from "react";
-import { addons, types, useParameter } from "@storybook/manager-api";
+import { addons, types, useParameter } from "storybook/manager-api";
 import { ADDON_ID, PARAM_KEY } from "./constants";
 import Tool from './Tool'
 

@@ -1,6 +1,6 @@
 {
   "name": "@stevendejong/storybook-stylesheet-toggle",
-  "version": "0.0.12",
+  "version": "1.0.0",
   "description": "The Storybook Stylesheet Toggle addon is a simple and convenient tool for changing stylesheets on the fly.",
   "keywords": [
     "storybook-addons"
@@ -15,17 +15,18 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "default": "./dist/index.js"
     },
     "./preview": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/preview.js",
-      "require": "./dist/preview.js"
+      "types": "./dist/preview.d.ts",
+      "default": "./dist/preview.js"
     },
-    "./preset": "./dist/preset.cjs",
+    "./preset": "./preset.js",
     "./manager": "./dist/manager.js",
     "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "storybook": "^9.0.0 || ^10.0.0"
   },
   "files": [
     "dist/**/*",
@@ -35,24 +36,20 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist",
-    "prebuild": "yarn clean",
+    "prebuild": "npm run clean",
     "build": "tsup",
-    "build:watch": "yarn build --watch",
+    "build:watch": "npm run build -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p build:watch 'storybook --quiet'",
     "prerelease": "zx scripts/prepublish-checks.js",
-    "release": "yarn build && auto shipit",
+    "release": "npm run build && auto shipit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^8.0.0",
-    "@storybook/addon-interactions": "^8.0.0",
-    "@storybook/addon-links": "^8.0.0",
-    "@storybook/addon-mdx-gfm": "^8.0.0",
-    "@storybook/react": "^8.0.0",
-    "@storybook/react-vite": "^8.0.0",
-    "@types/node": "^20.11.26",
+    "@storybook/react": "^10.1.11",
+    "@storybook/react-vite": "^10.1.11",
+    "@types/node": "^22.10.2",
     "@types/react": "^18.2.65",
     "@vitejs/plugin-react": "^4.2.1",
     "auto": "^11.1.1",
@@ -61,12 +58,12 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "prompts": "^2.4.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rimraf": "^5.0.5",
-    "storybook": "^8.0.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.2",
+    "storybook": "^10.1.11",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
     "vite": "^5.1.6",
     "zx": "^7.2.3"
   },
@@ -75,14 +72,12 @@
     "registry": "https://registry.npmjs.org"
   },
   "bundler": {
-    "exportEntries": [
-      "src/index.ts"
-    ],
     "managerEntries": [
       "src/manager.tsx"
     ],
     "previewEntries": [
-      "src/preview.ts"
+      "src/preview.ts",
+      "src/index.ts"
     ],
     "nodeEntries": [
       "src/preset.ts"
