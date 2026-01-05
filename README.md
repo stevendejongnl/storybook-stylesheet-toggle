@@ -1,9 +1,24 @@
 # Storybook Stylesheet Toggle addon
 
-The Storybook Stylesheet Toggle addon is a simple and convenient tool for changing stylesheets on the fly within your Storybook stories. It allows you to dynamically switch between different stylesheets using a dropdown menu accessed via a toolbar button.
+The Storybook Stylesheet Toggle addon is a simple and convenient tool for managing stylesheets in your Storybook stories. Switch between configured stylesheets and dynamically add custom ones at runtime via a dropdown menu in the toolbar.
 
 ![](preview.gif)
 
+## Installation
+
+```bash
+npm install --save-dev @stevendejong/storybook-stylesheet-toggle
+```
+
+Add the addon to your `.storybook/main.ts`:
+
+```typescript
+export default {
+  addons: [
+    '@stevendejong/storybook-stylesheet-toggle',
+  ],
+};
+```
 
 ## Usage
 
@@ -33,3 +48,33 @@ export default preview;
 
 ## Using the Toggle
 Once you've configured your story, you'll see a toolbar button in Storybook that allows you to select and apply different stylesheets to your components during development.
+
+### Adding Custom Stylesheets
+
+In addition to configured stylesheets, you can dynamically add custom stylesheets at runtime:
+
+1. Click the paint brush toolbar button
+2. Enter a stylesheet URL in the input field at the top:
+   - Relative paths: `./theme.css`, `/assets/theme.css`
+   - Absolute URLs: `https://example.com/styles/theme.css`
+3. Press Enter or click "Add"
+
+**Features:**
+- ✅ Custom stylesheets persist across browser sessions
+- ✅ Delete custom stylesheets with the trash icon
+- ✅ URL validation (must end with `.css`)
+- ✅ Duplicate detection
+- ✅ Auto-naming from URL (e.g., `theme.css`)
+- ✅ Visual separation from configured stylesheets
+
+**Example workflow:**
+1. Open Storybook
+2. Click paint brush icon
+3. Add custom stylesheet: `https://cdn.example.com/dark-theme.css`
+4. Stylesheet appears in "Custom Stylesheets" section
+5. Switch between custom and configured stylesheets
+6. Delete custom stylesheets when no longer needed
+
+**localStorage Storage:**
+- Selected stylesheet: `localStorage.getItem('stylesheetToggle')`
+- Custom stylesheets: `localStorage.getItem('stylesheetToggle:custom')`

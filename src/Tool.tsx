@@ -1,9 +1,10 @@
 import React from "react";
 import { useGlobals } from "storybook/manager-api";
-import { IconButton, TooltipLinkList, WithTooltip } from "storybook/internal/components";
+import { IconButton, WithTooltip } from "storybook/internal/components";
 import { PaintBrushIcon } from "@storybook/icons";
 import { PARAM_KEY, TOOL_ID } from "./constants";
 import { defaultStylesheets } from "./defaults";
+import { CustomTooltipLinkList } from "./CustomTooltipLinkList";
 
 
 const Tool = ({ stylesheets }: { [key: string]: string }) => {
@@ -14,45 +15,36 @@ const Tool = ({ stylesheets }: { [key: string]: string }) => {
     return null;
   }
 
-  const mapping: {[key: string]: string} = {};
-  for (const [name, url] of Object.entries(defaultStylesheets)) {
-    mapping[name] = url;
-  }
-  for (const [name, url] of Object.entries(stylesheets)) {
-    mapping[name] = url;
-  }
-
-  const active = localStorage.getItem(PARAM_KEY);
-  if (!active) {
-    localStorage.setItem(PARAM_KEY, "default");
-  }
-
-  const toggleStylesheet = (sheet: string) => {
-    localStorage.setItem(PARAM_KEY, sheet);
-    window.location.reload();
+  // Merge default and configured stylesheets
+  const configuredStylesheets: {[key: string]: string} = {
+    ...defaultStylesheets,
+    ...stylesheets,
   };
 
-  const items = [];
-  for (const [name, url] of Object.entries(mapping)) {
-    items.push({
-      id: name,
-      title: name,
-      onClick: () => toggleStylesheet(name),
-      active: ((!active && name === "default") || active === name)
-    });
-  }
+  const activeStylesheet = localStorage.getItem(PARAM_KEY) || "default";
+
+  const handleSelect = (id: string) => {
+    localStorage.setItem(PARAM_KEY, id);
+    window.location.reload();
+  };
 
   return (
     <WithTooltip
       placement="top"
       trigger="click"
-      tooltip={<TooltipLinkList links={items} />}
+      tooltip={
+        <CustomTooltipLinkList
+          configuredStylesheets={configuredStylesheets}
+          activeStylesheet={activeStylesheet}
+          onSelect={handleSelect}
+        />
+      }
       closeOnOutsideClick
     >
       <IconButton
         key={TOOL_ID}
         active={isActive}
-        title="Activate Stylesheet"
+        title="Toggle Stylesheet"
       >
         <PaintBrushIcon />
       </IconButton>

@@ -1,6 +1,7 @@
 import type { PartialStoryFn as StoryFunction, Renderer, StoryContext } from "storybook/internal/types";
 import { useEffect, useGlobals } from "storybook/preview-api";
 import { PARAM_KEY } from "./constants";
+import { getCustomStylesheets } from "./customStylesheets";
 
 
 export const withGlobals = (
@@ -11,17 +12,28 @@ export const withGlobals = (
   const stylesheetToggle = globals[PARAM_KEY];
 
   const { theme } = context.globals;
-  const stylesheets = context.parameters[PARAM_KEY];
+  const configuredStylesheets = context.parameters[PARAM_KEY];
 
-  const active = localStorage.getItem(PARAM_KEY);
-  if (!active) {
-    localStorage.setItem(PARAM_KEY, "default");
+  const activeId = localStorage.getItem(PARAM_KEY) || "default";
+
+  // Resolve URL: check if it's a custom stylesheet or configured stylesheet
+  let stylesheetUrl: string | undefined;
+
+  if (activeId.startsWith('custom:')) {
+    // Look up in custom stylesheets
+    const customSheets = getCustomStylesheets();
+    const customSheet = customSheets.find(s => s.id === activeId);
+    stylesheetUrl = customSheet?.url;
+  } else {
+    // Look up in configured stylesheets
+    stylesheetUrl = configuredStylesheets?.[activeId];
   }
-  const stylesheet = stylesheets[active];
 
   useEffect(() => {
-    injectStylesheet(stylesheet);
-  }, [stylesheetToggle, theme]);
+    if (stylesheetUrl) {
+      injectStylesheet(stylesheetUrl);
+    }
+  }, [stylesheetToggle, theme, stylesheetUrl]);
 
   return StoryFn();
 };
