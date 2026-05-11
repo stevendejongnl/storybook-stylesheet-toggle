@@ -1,3 +1,16 @@
+# v1.0.3 (Mon May 11 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: run api:check after build, not in prerelease ([@stevendejongnl](https://github.com/stevendejongnl))
+- chore: add api-extractor for public API review ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### Authors: 1
+
+- Steven de Jong ([@stevendejongnl](https://github.com/stevendejongnl))
+
+---
+
 # v1.0.2 (Mon Jan 05 2026)
 
 #### ⚠️ Pushed to `main`
