@@ -43,8 +43,8 @@
     "start": "run-p build:watch 'storybook --quiet'",
     "api:update": "api-extractor run --local --verbose",
     "api:check": "api-extractor run",
-    "prerelease": "npm run api:check && zx scripts/prepublish-checks.js",
-    "release": "npm run build && auto shipit",
+    "prerelease": "zx scripts/prepublish-checks.js",
+    "release": "npm run build && npm run api:check && auto shipit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
