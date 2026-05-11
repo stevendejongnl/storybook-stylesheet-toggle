@@ -5,3 +5,6 @@ storybook-static/
 build-storybook.log
 .DS_Store
 .env
+
+# api-extractor
+temp/

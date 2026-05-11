@@ -41,12 +41,15 @@
     "build:watch": "npm run build -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p build:watch 'storybook --quiet'",
-    "prerelease": "zx scripts/prepublish-checks.js",
+    "api:update": "api-extractor run --local --verbose",
+    "api:check": "api-extractor run",
+    "prerelease": "npm run api:check && zx scripts/prepublish-checks.js",
     "release": "npm run build && auto shipit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.58.7",
     "@storybook/react": "^10.1.11",
     "@storybook/react-vite": "^10.1.11",
     "@types/node": "^22.10.2",
@@ -97,6 +100,5 @@
       "react-native"
     ],
     "icon": "https://github.com/stevendejongnl/storybook-stylesheet-toggle/blob/main/icon.png?raw=true"
-  },
-  "dependencies": {}
+  }
 }
