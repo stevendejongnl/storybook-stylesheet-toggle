@@ -1,3 +1,15 @@
+# v1.0.4 (Thu Oct 22 2026)
+
+#### 🐛 Bug Fix
+
+- Support Storybook 11 while staying on Storybook 10 [#15](https://github.com/stevendejongnl/storybook-stylesheet-toggle/pull/15) ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### Authors: 1
+
+- Steven de Jong ([@stevendejongnl](https://github.com/stevendejongnl))
+
+---
+
 # v1.0.3 (Mon May 11 2026)
 
 #### ⚠️ Pushed to `main`
