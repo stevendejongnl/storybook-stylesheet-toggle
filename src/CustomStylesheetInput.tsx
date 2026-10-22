@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'storybook/internal/components';
+import { Form, Button, hasModernComponents } from './compat';
 import { saveCustomStylesheet, isValidStylesheetUrl, getCustomStylesheets, isDuplicateUrl } from './customStylesheets';
 
 interface CustomStylesheetInputProps {
@@ -54,7 +54,11 @@ export const CustomStylesheetInput: React.FC<CustomStylesheetInputProps> = ({ on
             placeholder="https://example.com/theme.css"
             style={{ flex: 1 }}
           />
-          <Button onClick={handleAdd} size="small">
+          <Button
+            onClick={handleAdd}
+            size="small"
+            {...(hasModernComponents ? { ariaLabel: false } : {})}
+          >
             Add
           </Button>
         </div>

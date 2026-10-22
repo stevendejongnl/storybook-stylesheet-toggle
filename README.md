@@ -20,6 +20,32 @@ export default {
 };
 ```
 
+### Compatibility
+
+| Storybook | Supported |
+|-----------|-----------|
+| 11.x      | ✅ |
+| 10.x      | ✅ |
+| 9.x       | ✅ |
+
+### CSF Next (`definePreview`)
+
+If your project uses CSF Next, also register the addon in `.storybook/preview.ts`:
+
+```typescript
+import { definePreview } from "@storybook/react-vite";
+import stylesheetToggle from "@stevendejong/storybook-stylesheet-toggle";
+
+export default definePreview({
+  addons: [stylesheetToggle()],
+  parameters: {
+    stylesheetToggle: {
+      "default": "main.css",
+    },
+  },
+});
+```
+
 ## Usage
 
 ### Setting Stylesheets
@@ -27,7 +53,7 @@ export default {
 You can specify the stylesheets you want to toggle in your story using the `stylesheetToggle` parameter. This parameter should be an object where each key represents a label for the stylesheet option, and the corresponding value is the path to the stylesheet file or a URL:
 
 ```typescript
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-vite";
 
 const preview: Preview = {
   parameters: {

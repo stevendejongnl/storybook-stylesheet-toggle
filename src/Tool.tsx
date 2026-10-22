@@ -1,10 +1,10 @@
 import React from "react";
 import { useGlobals } from "storybook/manager-api";
-import { IconButton, WithTooltip } from "storybook/internal/components";
 import { PaintBrushIcon } from "@storybook/icons";
 import { PARAM_KEY, TOOL_ID } from "./constants";
 import { defaultStylesheets } from "./defaults";
 import { CustomTooltipLinkList } from "./CustomTooltipLinkList";
+import { Button, hasModernComponents, IconButton, PopoverProvider, WithTooltip } from "./compat";
 
 
 const Tool = ({ stylesheets }: { [key: string]: string }) => {
@@ -28,17 +28,36 @@ const Tool = ({ stylesheets }: { [key: string]: string }) => {
     window.location.reload();
   };
 
+  const list = (
+    <CustomTooltipLinkList
+      configuredStylesheets={configuredStylesheets}
+      activeStylesheet={activeStylesheet}
+      onSelect={handleSelect}
+    />
+  );
+
+  // Storybook 10.1+ (required for 11): accessible popover with a ghost Button
+  if (hasModernComponents) {
+    return (
+      <PopoverProvider
+        key={TOOL_ID}
+        ariaLabel="Stylesheet options"
+        placement="bottom-start"
+        popover={list}
+      >
+        <Button variant="ghost" padding="small" ariaLabel="Toggle stylesheet">
+          <PaintBrushIcon />
+        </Button>
+      </PopoverProvider>
+    );
+  }
+
+  // Storybook 9 and 10.0
   return (
     <WithTooltip
       placement="top"
       trigger="click"
-      tooltip={
-        <CustomTooltipLinkList
-          configuredStylesheets={configuredStylesheets}
-          activeStylesheet={activeStylesheet}
-          onSelect={handleSelect}
-        />
-      }
+      tooltip={list}
       closeOnOutsideClick
     >
       <IconButton

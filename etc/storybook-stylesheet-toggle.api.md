@@ -4,8 +4,10 @@
 
 ```ts
 
+import * as storybook_internal_csf from 'storybook/internal/csf';
+
 // @public (undocumented)
-const _default: {};
+const _default: () => storybook_internal_csf.PreviewAddon<storybook_internal_csf.AddonTypes>;
 export default _default;
 
 // (No @packageDocumentation comment for this package)
