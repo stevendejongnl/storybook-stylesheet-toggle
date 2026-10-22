@@ -1,0 +1,48 @@
+name: Storybook next compatibility
+
+# Builds and smoke-tests the addon against the newest Storybook prerelease
+# (storybook@next), while the repository itself stays on the stable release.
+on:
+  schedule:
+    # Every Monday at 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  storybook-next:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - name: Switch Storybook devDependencies to next
+        run: |
+          VERSION=$(npm view storybook@next version)
+          echo "Testing against storybook@$VERSION"
+          echo "### Storybook $VERSION" >> "$GITHUB_STEP_SUMMARY"
+          npm pkg set \
+            "devDependencies.storybook=$VERSION" \
+            "devDependencies.@storybook/react=$VERSION" \
+            "devDependencies.@storybook/react-vite=$VERSION"
+          rm package-lock.json
+          npm install
+          npm install --no-save playwright
+
+      - name: Build addon
+        run: npm run build
+
+      - name: Build Storybook
+        run: npx storybook build --quiet
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Smoke test
+        run: node scripts/smoke-test.mjs storybook-static
