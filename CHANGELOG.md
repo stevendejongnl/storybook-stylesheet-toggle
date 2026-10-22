@@ -1,3 +1,15 @@
+# v1.1.0 (Thu Oct 22 2026)
+
+#### 🚀 Enhancement
+
+- ci: update checkout and setup-node actions to v7 [#16](https://github.com/stevendejongnl/storybook-stylesheet-toggle/pull/16) ([@stevendejongnl](https://github.com/stevendejongnl))
+
+#### Authors: 1
+
+- Steven de Jong ([@stevendejongnl](https://github.com/stevendejongnl))
+
+---
+
 # v1.0.4 (Thu Oct 22 2026)
 
 #### 🐛 Bug Fix
